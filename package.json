@@ -1,0 +1,44 @@
+{
+  "name": "auth",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Goliafsoft/auth.git",
+  "author": "Dmytro Drachov <dmytro.drachov@avid.com>",
+  "license": "GPLv3",
+  "private": true,
+  "scripts": {
+    "lint": "eslint ./",
+    "start": "node index.js",
+    "build-docker": "docker build .",
+    "precommit": "yarn lint",
+    "start:watch": "nodemon yarn start",
+    "link-packages": "linklocal",
+    "postinstall": "yarn link-packages"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
+  },
+  "dependencies": {
+    "@local/authentication": "./src/authentication",
+    "@local/models": "./src/models",
+    "body-parser": "^1.18.3",
+    "connect-redis": "^3.3.3",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "knex": "^0.14.6",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.4.3",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "husky": "^1.0.0-rc.8",
+    "linklocal": "^2.8.2",
+    "nodemon": "^1.17.5"
+  }
+}
